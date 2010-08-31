@@ -11,6 +11,6 @@ class Account < ActiveRecord::Base
   end
   
   def balance
-    0
+    self.ledger_entries.sum(:amount)
   end
 end

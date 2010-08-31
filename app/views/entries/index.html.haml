@@ -1,0 +1,14 @@
+%table
+  %tr
+    %th Date
+    %th Description
+    %th Credits
+    %th Debits
+    %th Balance
+  - @entries.each do |entry|
+    %tr
+      %td= entry.created_at
+      %td= entry.description
+      %td= entry.credits_total
+      %td= entry.debits_total
+      %td= entry.balance

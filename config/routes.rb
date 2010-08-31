@@ -24,6 +24,9 @@ Billspike::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+  
+  resources :accounts
+  resources :entries
 
   # Sample resource route with sub-resources:
   #   resources :products do

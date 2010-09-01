@@ -1,6 +1,47 @@
-.tsummary {
-    background: #ccc;
+body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+#wrapper {
+    padding: 0px 8px;
+}
+
+#topbar {
+   height: 48px;
+   
+   background: #999; /* for non-css3 browsers */
+   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#aaaaaa'); /* for IE */
+   background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#aaa)); /* for webkit browsers */
+   background: -moz-linear-gradient(top,  #ccc,  #aaa); /* for firefox 3.6+ */
+   margin: 0px;
+   padding: 2px;
+   -webkit-box-shadow: 0px 3px 10px #444;
+}
+
+#topbar .logo {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Gil Sans', 'Arial', 'Helvetica', sans-serif;
+    color: #008;
+    text-shadow: 2px 2px 2px #999 ;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Gil Sans', 'Arial', 'Helvetica', sans-serif;
+    border-radius: 1em 0px 1em 0px;
+    padding: 0.1em 1em;
+    margin-right: 10px;
+    width: auto;
+    margin-left: 0px;
+    background-color: #cccccc;
+    -webkit-box-shadow: 5px 5px 10px #444;
+}
+
+table.tsummary {
     border-collapse: collapse;
+    border: 3px solid black;
 }
 
 .tsummary th {
@@ -20,4 +61,51 @@
 .credit {
     color: black;
     text-align: right;
+}
+
+.tsummary .total {
+    border-top: double black 1px;
+    background-color: white;
+    font-weight: bold;
+}
+
+.tsummary .odd {
+    background-color: #ffffee;
+}
+.tsummary .even {
+    background-color: #eeffee;
+}
+
+.ledger {
+    display: inline-block;
+    text-align: center;
+    margin: 2px 8px;
+    background-color: #ccc;
+    padding: 4px 8px;
+    -webkit-box-shadow: 5px 5px 10px #444;
+}
+
+ul.navbar {
+    padding: 4px 2px;
+    background-color: #000088;
+    color: #ffffff;
+}
+
+ul.navbar > li {
+   display: inline;
+   padding: 0px 10px;
+}
+
+ul.navbar > li:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+ul.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+ul.navbar > li:hover a {
+    color: #000000;
 }

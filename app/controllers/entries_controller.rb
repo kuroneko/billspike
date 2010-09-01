@@ -11,6 +11,9 @@ class EntriesController < ApplicationController
   
   def new
     @entry = Entry.new
+    # build two LE's to start with.
+    @entry.ledger_entries.build
+    @entry.ledger_entries.build
   end
   
   def create
@@ -37,10 +40,15 @@ class EntriesController < ApplicationController
   
   def update
     @entry = Entry.find(params[:id])
-    if @entry.update_attributes(params[:entry])
-      redirect_to @entry, :notice => 'Entry was successfully updated'
-    else
+    if params[:add] then
+      @entry.ledger_entries.build
       render :action => 'edit'
+    else
+      if @entry.update_attributes(params[:entry])
+        redirect_to @entry, :notice => 'Entry was successfully updated'
+      else
+        render :action => 'edit'
+      end
     end
   end
   

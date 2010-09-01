@@ -1,3 +1,6 @@
+%ul.navbar
+  %li= link_to 'Transactions', entries_url
+  %li= link_to 'Accounts', accounts_url
 %h1 Transaction Summary
 %table.tsummary
   %tr
@@ -7,14 +10,14 @@
       %th{:class => account.creditor? ? 'creditor':'debtor'}
         =h account.name
   - @entries.each do |entry|
-    %tr
+    %tr{:class => cycle('odd','even')}
       %td= entry.created_at.to_date
       %td=h entry.description
       - @accounts.each do |account|
         %td{:class => (account.balance < 0)?'debt':'credit'}
           - if entry.balance(account)
             = number_to_currency(entry.balance(account))
-  %tr
+  %tr.total
     %td
     %td Totals
     - @accounts.each do |account|

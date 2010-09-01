@@ -1,3 +1,6 @@
+%ul.navbar
+  %li= link_to 'Home', root_url
+  %li= link_to 'New Transaction', new_entry_url
 %h1 Transactions
 %table.tsummary
   %tr
@@ -6,9 +9,12 @@
     %th Credits
     %th Debits
     %th Balance
+    %th
+    %th
+    %th
   - @entries.each do |entry|
-    %tr
-      %td= entry.created_at
+    %tr{:class => cycle('odd','even')}
+      %td= entry.created_at.to_date
       %td= entry.description
       %td.credit= number_to_currency entry.credits_total
       %td.debt= number_to_currency entry.debits_total

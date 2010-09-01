@@ -1,4 +1,8 @@
-<h1>Listing accounts</h1>
+<ul class="navbar">
+  <li><%= link_to 'Home', root_url %></li>
+  <li><%= link_to 'New Account', new_account_url %></li>
+</ul>
+<h1>Accounts</h1>
 
 <table>
   <tr>
@@ -11,15 +15,11 @@
 
 <% @accounts.each do |account| %>
   <tr>
-    <td><%= account.name %></td>
-    <td><%= account.balance %></td>
+    <td><%=h account.name %></td>
+    <td><%= number_to_currency(account.balance) %></td>
     <td><%= link_to 'Show', account %></td>
     <td><%= link_to 'Edit', edit_account_path(account) %></td>
     <td><%= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Account', new_account_path %>

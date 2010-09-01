@@ -1,0 +1,21 @@
+%h1 Transaction Summary
+%table.tsummary
+  %tr
+    %th Date
+    %th Description
+    - @accounts.each do |account|
+      %th{:class => account.creditor? ? 'creditor':'debtor'}
+        =h account.name
+  - @entries.each do |entry|
+    %td= entry.created_at.to_date
+    %td=h entry.description
+    - @accounts.each do |account|
+      %td{:class => (account.balance < 0)?'debt':'credit'}
+        - if entry.balance(account)
+          = number_to_currency(entry.balance(account))
+  %tr
+    %td
+    %td Totals
+    - @accounts.each do |account|
+      %td{:class => (account.balance<0)?'debt':'credit'}
+        = number_to_currency(account.balance)

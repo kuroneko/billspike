@@ -1,0 +1,23 @@
+.tsummary {
+    background: #ccc;
+    border-collapse: collapse;
+}
+
+.tsummary th {
+    border-bottom: solid 1px black;
+}
+
+.tsummary td {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+.debt {
+    color: red;
+    text-align: right;
+}
+
+.credit {
+    color: black;
+    text-align: right;
+}

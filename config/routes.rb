@@ -27,6 +27,8 @@ Billspike::Application.routes.draw do
   
   resources :accounts
   resources :entries
+  
+  root :to => "dashboard#index"
 
   # Sample resource route with sub-resources:
   #   resources :products do

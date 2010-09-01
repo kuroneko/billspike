@@ -1,4 +1,5 @@
-%table
+%h1 Transactions
+%table.tsummary
   %tr
     %th Date
     %th Description
@@ -9,6 +10,8 @@
     %tr
       %td= entry.created_at
       %td= entry.description
-      %td= entry.credits_total
-      %td= entry.debits_total
-      %td= entry.balance
+      %td.credit= number_to_currency entry.credits_total
+      %td.debt= number_to_currency entry.debits_total
+      %td{:class => (entry.balance < 0)?'debt':'credit'}= number_to_currency entry.balance
+      
+= link_to 'New Payment/Bill', new_entry_url

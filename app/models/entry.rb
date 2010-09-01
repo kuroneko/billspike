@@ -1,6 +1,9 @@
 class Entry < ActiveRecord::Base
-  has_many :ledger_entries
-  accepts_nested_attributes_for :ledger_entries, :reject_if => proc { |obj| obj.blank? }
+  has_many :ledger_entries, :dependent => :delete_all
+  
+  accepts_nested_attributes_for :ledger_entries, :allow_destroy => true, :reject_if => proc { |obj|
+    obj.blank? or obj['account_id'].nil? or obj['account_id'].blank? or obj['amount'].nil? or obj['amount'].to_f == 0.0
+  }
   
   def parties
     self.ledger_entries.map { |le| le.account }

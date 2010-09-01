@@ -26,7 +26,11 @@ Billspike::Application.routes.draw do
   #   end
   
   resources :accounts
-  resources :entries
+  resources :entries do
+    collection do
+      get :problems
+    end
+  end
   
   root :to => "dashboard#index"
 

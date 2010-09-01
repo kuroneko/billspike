@@ -1,0 +1,22 @@
+= form_for @entry do |f|
+  %div.field
+    = f.label :description
+    %br
+    = f.text_field :description
+    
+    %table
+      = f.fields_for :ledger_entries do |lf|
+        %tr
+          %td= lf.collection_select(:account_id, Account.all, :id, :name, :prompt => true)
+          %td= lf.text_field :amount
+          - unless lf.object.new_record?
+            %td
+              = lf.check_box '_destroy'
+              = lf.label '_destroy', 'Remove'
+      <% end %>
+
+    <% end %>
+    
+  %div.buttons
+    = f.submit 'Add Account', :name => 'add'
+    = f.submit

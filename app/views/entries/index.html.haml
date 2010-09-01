@@ -13,5 +13,7 @@
       %td.credit= number_to_currency entry.credits_total
       %td.debt= number_to_currency entry.debits_total
       %td{:class => (entry.balance < 0)?'debt':'credit'}= number_to_currency entry.balance
-      
+      %td= link_to 'Show', entry
+      %td= link_to 'Edit', edit_entry_url(entry)
+      %td= link_to 'Delete', entry, {:method => 'delete', :confirm => 'Are you sure?'}
 = link_to 'New Payment/Bill', new_entry_url

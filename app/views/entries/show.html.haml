@@ -1,0 +1,16 @@
+%h1
+  Entry #{@entry.id}
+%div
+  %b When
+  %br
+  = @entry.created_at.to_date
+%div
+  %b Description
+  %br
+  = @entry.description
+%h2 Ledger Entries
+- @entry.ledger_entries.each do |le|
+  %div
+    %b= le.account.name
+    %br
+    %span{:class => (le.amount < 0)?'debt':'credit'}= number_to_currency le.amount

@@ -14,8 +14,8 @@
       %td= entry.created_at.to_date
       %td=h entry.description
       - @accounts.each do |account|
-        %td{:class => (account.balance < 0)?'debt':'credit'}
-          - if entry.balance(account)
+        %td{:class => (entry.balance(account) < 0)?'debt':'credit'}
+          - if entry.balance(account) != 0.0
             = number_to_currency(entry.balance(account))
   %tr.total
     %td
